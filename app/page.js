@@ -144,7 +144,7 @@ export default function Home() {
     <Box fullwidth="true" height="100vh" display="flex" justifyContent="center" alignItems="center" 
       gap={2} flexDirection="column" bgcolor="#white">
 
-  <Typography variant="h1">Pantry Tracker</Typography>
+  <Typography variant="h1">Pantry Tracker App</Typography>
 
       {/** MAIN STACK FOR TOP BUTTONS */}
       <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
