@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Pantry Tracker App
 
-## Getting Started
+## Overview
+The Pantry Tracker App is a web application designed to help users manage their pantry inventory. It provides functionalities to add, remove, and search for items in the inventory. The app uses Firebase Firestore for database operations and Material-UI for the user interface.
 
-First, run the development server:
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Components](#components)
+  - [State Variables](#state-variables)
+  - [Helper Functions](#helper-functions)
+  - [Firestore Functions](#firestore-functions)
+  - [Modal Handlers](#modal-handlers)
+  - [App Design](#app-design)
+- [Contributing](#contributing)
+- [License](#license)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Installation
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/pantry-tracker-app.git
+   cd pantry-tracker-app
+   ```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. Set up Firebase:
+   - Create a Firebase project.
+   - Set up Firestore in your Firebase project.
+   - Replace the Firebase configuration in the `firebase.js` file with your project's configuration.
 
-## Learn More
+4. Start the application:
+   ```bash
+   npm run dev
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+## Usage
+1. Open the application in your browser at `http://localhost:3000`.
+2. Use the "Add New Item" button to add items to your pantry.
+3. Use the "Custom Add" button to add a specific quantity of an item.
+4. Use the "Custom Remove" button to remove a specific quantity of an item.
+5. Use the search bar to find and manipulate items in the inventory.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Components
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### State Variables
+- `inventory`: Holds the list of items in the pantry.
+- `itemName`: Holds the name of the item to be added or removed.
+- `itemQuantity`: Holds the quantity of the item to be added or removed.
+- `openAdd`, `openCustomAdd`, `openCustomRemove`, `openSearch`: Booleans to control the visibility of modals.
+- `itemExists`: Checks if an item exists in the inventory.
 
-## Deploy on Vercel
+### Helper Functions
+- `updateInventory()`: Fetches the inventory from Firestore and updates the `inventory` state variable.
+- `checkItemExists(item)`: Checks if an item exists in Firestore and updates the `itemExists` state variable.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Firestore Functions
+- `addItem(item)`: Adds a single unit of an item to the inventory.
+- `addMultipleItems(item, amount)`: Adds a specific quantity of an item to the inventory.
+- `removeItem(item)`: Removes a single unit of an item from the inventory.
+- `removeMultipleItems(item, amount)`: Removes a specific quantity of an item from the inventory.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Modal Handlers
+- `handleOpenAdd`, `handleCloseAdd`: Handles opening and closing of the add item modal.
+- `handleOpenCustomAdd`, `handleCloseCustomAdd`: Handles opening and closing of the custom add modal.
+- `handleOpenCustomRemove`, `handleCloseCustomRemove`: Handles opening and closing of the custom remove modal.
+- `handleOpenSearch`, `handleCloseSearch`: Handles opening and closing of the search modal.
+
+### App Design
+The main components of the app are structured as follows:
+
+1. **Header**: Displays the title "Pantry Tracker App".
+2. **Main Stack**: Contains buttons to add, custom add, and custom remove items.
+3. **Search Bar**: Allows users to search for items in the inventory.
+4. **Inventory Display**: Shows the list of items and their quantities with options to add or remove individual items.
+
+## Contributing
+Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
+
+## License
+This project is licensed under the MIT License.
